@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CERVOD-TOGO/BELGIQUE — Cercle des Volontaires pour le Développement</title>
+<meta name="description" content="Association Belgo-Togolaise CER.VO.D.-TOGO/BELGIQUE — Sans but lucratif, créée par des jeunes togolais pour lutter contre le sous-développement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF9F6; --ink:#1F2A24; --sub:#5B6660; --border:#D9D5C9;
+    --teal:#0F6E56;   --teal-fill:#E1F5EE;
+    --coral:#D85A30;  --coral-fill:#FAECE7;
+    --purple:#534AB7; --purple-fill:#EEEDFE;
+    --amber:#995B0B;  --amber-fill:#FAEEDA;
+    --green:#3B6D11;  --green-fill:#EAF3DE;
+    --blue:#185FA5;   --blue-fill:#E6F1FB;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); line-height:1.65;}
+  h1,h2,h3,h4{font-family:'Manrope',sans-serif; margin:0;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  /* ---- nav ---- */
+  header{position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--border); z-index:20;}
+  nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px;}
+  .nav-logo{display:flex; align-items:center; gap:10px; font-weight:800; font-size:15px; white-space:nowrap;}
+  .logo-circle{width:38px; height:38px; border-radius:10px; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; overflow:hidden;}
+  .logo-circle img{width:100%; height:100%; object-fit:cover;}
+  .nav-links{display:flex; flex-wrap:wrap; gap:0; list-style:none; margin:0; padding:0; font-size:13.5px;}
+  .nav-links a{text-decoration:none; margin-left:18px; font-weight:500;}
+  .nav-cta{background:var(--teal); color:#fff; padding:9px 16px; border-radius:8px; font-weight:700; font-size:13px; text-decoration:none; white-space:nowrap;}
+  .nav-toggle{display:none;}
+
+  .btn{display:inline-block; padding:11px 22px; border-radius:8px; font-weight:700; text-decoration:none; font-size:14px; border:2px solid transparent; cursor:pointer;}
+  .btn-teal{background:var(--teal); color:#fff;}
+  .btn-outline{border-color:var(--ink); color:var(--ink); background:none;}
+
+  /* ---- hero ---- */
+  .hero{padding:64px 0 50px;}
+  .hero-badge{display:inline-block; background:var(--amber-fill); color:var(--amber); font-size:12.5px; font-weight:700; padding:6px 14px; border-radius:20px; margin-bottom:16px;}
+  .hero h1{font-size:38px; font-weight:800; line-height:1.2; margin-bottom:16px; max-width:760px;}
+  .hero h1 span{color:var(--teal);}
+  .hero > .wrap > p{color:var(--sub); font-size:16px; max-width:640px; margin-bottom:26px;}
+  .hero-btns{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px;}
+  .hero-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .stat-card{border:2px dashed var(--border); border-radius:14px; padding:18px; text-align:center; background:#fff;}
+  .stat-card .num{font-size:26px; font-weight:800; color:var(--teal);}
+  .stat-card .lbl{font-size:12.5px; color:var(--sub); margin-top:4px;}
+
+  /* ---- generic section ---- */
+  section{padding:56px 0; border-bottom:1px solid var(--border);}
+  .section-tag{display:inline-block; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:6px 12px; border-radius:20px; background:var(--teal-fill); color:var(--teal); margin-bottom:14px;}
+  .section-title{font-size:26px; font-weight:800; margin-bottom:10px;}
+  .section-sub{color:var(--sub); font-size:15px; max-width:640px; margin-bottom:30px;}
+
+  /* ---- about ---- */
+  /* Ligne du haut : carte du Directeur Exécutif (réutilise le style .president-card) + texte, côte à côte */
+  .about-top{display:grid; grid-template-columns:280px 1fr; gap:32px; align-items:start; margin-bottom:34px;}
+  .about-text p{font-size:14.5px; color:var(--sub);}
+  .missions-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .mission-card{border:2px dashed var(--border); border-radius:14px; padding:16px; background:#fff;}
+  .mission-icon{width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:17px; margin-bottom:10px;}
+  .mission-card h3{font-size:14.5px; margin-bottom:4px;}
+  .mission-card p{font-size:12.5px; color:var(--sub); margin:0;}
+
+  /* ---- actions ---- */
+  .actions-list{display:flex; flex-direction:column; gap:14px;}
+  .action-item{display:grid; grid-template-columns:44px 1fr; gap:16px; border:2px dashed var(--border); border-radius:14px; padding:18px; background:#fff;}
+  .action-num{width:36px; height:36px; border-radius:50%; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800;}
+  .action-item h4{font-size:15.5px; margin-bottom:4px;}
+  .action-item p{font-size:13.5px; color:var(--sub); margin:0;}
+
+  /* ---- projets ---- */
+  .projets-contact{background:var(--teal-fill); color:var(--teal); border-radius:12px; padding:14px 18px; font-size:14px; margin-bottom:24px; font-weight:500;}
+  .projet-bloc{border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-bottom:18px; background:#fff;}
+  .projet-bloc-header{color:#fff; font-weight:700; padding:12px 18px; font-size:14.5px;}
+  .projet-bloc-body{padding:18px; font-size:14px; color:var(--sub);}
+  .stages-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; padding:18px;}
+  .stage-item{border:1px dashed var(--border); border-radius:10px; padding:12px 14px;}
+  .stage-domaine{font-size:11.5px; font-weight:700; text-transform:uppercase; color:var(--coral); margin-bottom:4px;}
+  .stage-item p{font-size:13.5px; margin:0; color:var(--ink);}
+  .table-wrap{padding:0 18px 18px; overflow-x:auto;}
+  .projets-table{width:100%; border-collapse:collapse; font-size:13.5px;}
+  .projets-table th{text-align:left; padding:10px 12px; border-bottom:2px solid var(--border); color:var(--sub); font-weight:700; font-size:12px; text-transform:uppercase;}
+  .projets-table td{padding:10px 12px; border-bottom:1px dashed var(--border); vertical-align:top;}
+  .annee{color:var(--sub); font-size:12px;}
+  .participer{color:var(--sub); font-style:italic;}
+
+  /* ---- blog ---- */
+  .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .blog-card{border:2px dashed var(--border); border-radius:14px; overflow:hidden; background:#fff;}
+  .blog-img{width:100%; aspect-ratio:16/10; object-fit:cover;}
+  .blog-body{padding:16px;}
+  .blog-cat{font-size:11.5px; font-weight:700; text-transform:uppercase;}
+  .blog-card h3{font-size:15px; margin:6px 0 8px; line-height:1.35;}
+  .blog-card > .blog-body > p{font-size:13px; color:var(--sub); margin:0 0 12px;}
+  .blog-meta{display:flex; justify-content:space-between; font-size:12px; color:var(--sub); align-items:center;}
+  .read-link{text-decoration:none; font-weight:700; color:var(--teal);}
+
+  /* ---- belgique (uniquement Melyssa ici, Abasse a été déplacé dans "Qui sommes-nous ?") ---- */
+  .belgique-content{display:grid; grid-template-columns:280px 1fr; gap:32px; align-items:start;}
+  .president-card{border:2px dashed var(--border); border-radius:14px; padding:22px; text-align:center; background:#fff;}
+  .president-photo{width:130px; height:130px; border-radius:50%; object-fit:cover; margin:0 auto 14px; border:4px solid var(--teal-fill); display:block;}
+  .president-card h3{font-size:16px;}
+  .president-titre{font-size:12.5px; color:var(--sub); margin:4px 0 14px;}
+  .pcontact{font-size:13px; margin-bottom:6px;}
+  .belgique-text p{font-size:14.5px; color:var(--sub);}
+
+  /* ---- bénévoles ---- */
+  .benevoles-content{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start;}
+  .benv-text h3{font-size:18px; margin-bottom:10px;}
+  .benv-text > p{font-size:14.5px; color:var(--sub); margin-bottom:18px;}
+  .avantage{display:flex; gap:10px; align-items:flex-start; margin-bottom:12px; font-size:14px;}
+  .avantage-check{width:20px; height:20px; border-radius:50%; background:var(--green-fill); color:var(--green); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0;}
+  .benv-form{border:2px dashed var(--border); border-radius:14px; padding:22px; background:#fff;}
+  .form-group{margin-bottom:12px;}
+  .form-group label{display:block; font-size:12.5px; font-weight:700; margin-bottom:5px; color:var(--sub);}
+  input, select, textarea{width:100%; padding:11px 12px; border:1px solid var(--border); border-radius:8px; font-family:inherit; font-size:14px;}
+  textarea{min-height:90px; resize:vertical;}
+  .form-submit{width:100%; background:var(--teal); color:#fff; border:none; border-radius:8px; padding:13px; font-weight:700; font-size:14.5px; cursor:pointer; margin-top:6px;}
+
+  /* ---- media ---- */
+  .media-links{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:26px;}
+  .media-link{text-decoration:none; font-weight:700; font-size:13.5px; padding:10px 16px; border-radius:8px; border:2px dashed var(--border); background:#fff;}
+  .media-link.youtube{color:var(--coral);}
+  .media-link.insta{color:var(--purple);}
+  .media-link.reportage{color:var(--teal);}
+  .photos-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  .photo-card{position:relative; border-radius:14px; overflow:hidden; aspect-ratio:4/3;}
+  .photo-card img{width:100%; height:100%; object-fit:cover;}
+  .photo-card figcaption{position:absolute; bottom:0; left:0; right:0; padding:10px 12px; background:linear-gradient(transparent, rgba(0,0,0,.6)); color:#fff; font-size:12.5px; font-weight:500;}
+
+  /* ---- contact band ---- */
+  .contact-band{background:var(--ink); color:#fff; padding:50px 0;}
+  .contact-band .wrap > h2{font-size:24px; margin-bottom:6px;}
+  .contact-band .wrap > p{color:#B9C2BC; font-size:14px; margin-bottom:30px;}
+  .contact-cols{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .contact-col-title{font-weight:700; font-size:15px; margin-bottom:14px;}
+  .info-item{display:flex; gap:10px; align-items:center; font-size:13.5px; margin-bottom:10px; color:#D8DED9;}
+  .info-dot{width:6px; height:6px; border-radius:50%; background:var(--teal); flex-shrink:0;}
+  .info-item a{text-decoration:underline; color:#fff;}
+
+  footer{text-align:center; padding:20px 0; font-size:12.5px; color:var(--sub); display:flex; flex-direction:column; gap:4px;}
+
+  @media(max-width:860px){
+    .nav-links{display:none;}
+    .about-top, .belgique-content, .benevoles-content{grid-template-columns:1fr;}
+    .missions-grid, .stages-grid, .blog-grid, .photos-grid, .contact-cols{grid-template-columns:repeat(2,1fr);}
+    .hero-stats{grid-template-columns:1fr;}
+  }
+  @media(max-width:560px){
+    .missions-grid, .stages-grid, .blog-grid, .photos-grid, .contact-cols{grid-template-columns:1fr;}
+    .hero h1{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAVIGATION (menu du haut) ══ -->
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="nav-logo">
+        <div class="logo-circle"><img src="WhatsApp Image 2026-07-19 at 16.30.58.jpeg" alt=""></div>
+        <span>CER.VO.D.-TOGO/BELGIQUE</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">Qui sommes-nous ?</a></li>
+        <li><a href="#actions">Nos actions</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#blog">Actualités</a></li>
+        <li><a href="#belgique">ASBL Belgique</a></li>
+        <li><a href="#media">Photos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#benevoles" class="nav-cta">Devenir volontaire</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══ HERO (bandeau d'accueil tout en haut) ══ -->
+<section class="hero" style="border-bottom:none;">
+  <div class="wrap">
+    <span class="hero-badge">🌍 Association Belgo-Togolaise — Agréée N° 3313</span>
+    <h1>Bienvenue sur le site de l'association <span>CER.VO.D.-TOGO/BELGIQUE</span></h1>
+    <p>Cercle des Volontaires pour le Développement — une association sans but lucratif créée par des jeunes togolais pour lutter contre les causes profondes du sous-développement et promouvoir le développement durable.</p>
+    <div class="hero-btns">
+      <a href="#projets" class="btn btn-teal">Projets 2025-2026</a>
+      <a href="#benevoles" class="btn btn-outline">Devenir volontaire</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="num">2</div><div class="lbl">Pays (Togo & Belgique)</div></div>
+      <div class="stat-card"><div class="num">500+</div><div class="lbl">Bénéficiaires</div></div>
+      <div class="stat-card"><div class="num">2003</div><div class="lbl">Fondée en</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION "QUI SOMMES-NOUS ?"
+     Contient : texte de présentation + carte du Directeur Exécutif + grille des 6 domaines d'action
+     ══════════════════════════════════════════ -->
+<section id="about">
+  <div class="wrap">
+    <span class="section-tag">Qui sommes-nous ?</span>
+    <h2 class="section-title">Une association créée par et pour les jeunes</h2>
+
+    <!-- ▶ LIGNE DU HAUT : carte du Directeur Exécutif (même style que la carte de Melyssa) + texte de présentation -->
+    <div class="about-top">
+      <div class="president-card">
+        <img class="president-photo" src="Abasse-Aboubakari.jpg" alt="Abasse ABOUBAKARI">
+        <h3>Abasse ABOUBAKARI</h3>
+        <p class="president-titre">Directeur Exécutif — CERVOD-TOGO</p>
+          <div class="pcontact">📞 +228 90 06 36 54</div>
+          <div class="pcontact">📧 cervodtogo@gmail.com</div>
+      </div>
+      <div class="about-text">
+        <p>L'association <strong>CERCLE DES VOLONTAIRES POUR LE DEVELOPPEMENT-TOGO (CERVOD-TOGO)</strong> est une association sans but lucratif créée par des jeunes togolais qui, après de multiples réflexions, ont décidé de converger leurs efforts et leurs énergies vers des objectifs communs pour lutter contre les causes profondes du sous-développement et promouvoir le développement durable et participatif de leurs communautés.</p>
+        <p style="margin-top:14px">Elle est agréée sous le <strong>N° 3313</strong> au MATDCL/SG/DAPOC — Lomé, République Togolaise.</p>
+        <p style="margin-top:14px">L'association dispose également d'une branche belge : l'<strong>A.S.B.L. CERVOD-Belgique</strong>, présidée par Melyssa AMISI, qui assure le lien entre les volontaires européens et les projets sur le terrain au Togo.</p>
+      </div>
+    </div>
+    <!-- ▲ FIN ligne du haut -->
+
+    <!-- ▶ GRILLE DES 6 DOMAINES D'ACTION (santé, éducation, environnement, social, agriculture, médias) — juste en dessous -->
+    <div class="missions-grid">
+      <div class="mission-card"><div class="mission-icon" style="background:var(--green-fill); color:var(--green)">🌱</div><h3>Environnement</h3><p>Protection des ressources naturelles et sensibilisation pour un Togo vert.</p></div>
+      <div class="mission-card"><div class="mission-icon" style="background:var(--coral-fill); color:var(--coral)">📚</div><h3>Éducation</h3><p>Lutte contre l'analphabétisme, stages en éducation préscolaire et primaire.</p></div>
+      <div class="mission-card"><div class="mission-icon" style="background:var(--amber-fill); color:var(--amber)">🏥</div><h3>Santé</h3><p>Soins infirmiers, prévention IST/VIH, paludisme et tuberculose.</p></div>
+      <div class="mission-card"><div class="mission-icon" style="background:var(--purple-fill); color:var(--purple)">👧</div><h3>Social</h3><p>Orphelinat Notre Dame de Nazareth, accompagnement handicap, travail social.</p></div>
+      <div class="mission-card"><div class="mission-icon" style="background:var(--blue-fill); color:var(--blue)">🌾</div><h3>Agriculture</h3><p>Soutien à l'agriculture et à l'élevage local pour les familles rurales.</p></div>
+      <div class="mission-card"><div class="mission-icon" style="background:var(--teal-fill); color:var(--teal)">🎙️</div><h3>Médias</h3><p>Stages en journalisme radio, communication et promotion culturelle togolaise.</p></div>
+    </div>
+    <!-- ▲ FIN grille des domaines -->
+
+  </div>
+</section>
+
+<!-- ══ NOS ACTIONS (les 4 programmes numérotés) ══ -->
+<section id="actions">
+  <div class="wrap">
+    <span class="section-tag">Nos programmes</span>
+    <h2 class="section-title">Comment nous intervenons</h2>
+    <p class="section-sub">Nos stratégies d'intervention sont pensées pour maximiser l'impact au sein des communautés locales.</p>
+    <div class="actions-list">
+      <div class="action-item"><div class="action-num">1</div><div><h4>Camps chantiers de développement</h4><p>Organisation de camps de travail participatifs où des jeunes volontaires locaux et internationaux réalisent des projets concrets pour les communautés.</p></div></div>
+      <div class="action-item"><div class="action-num">2</div><div><h4>Missions humanitaires</h4><p>Déploiement de missions de solidarité ciblant les populations les plus vulnérables, avec des équipes formées et engagées sur le terrain.</p></div></div>
+      <div class="action-item"><div class="action-num">3</div><div><h4>Petits projets sociaux</h4><p>Exécution de micro-projets à fort impact : construction de points d'eau, jardins scolaires, distributions de kits, etc.</p></div></div>
+      <div class="action-item"><div class="action-num">4</div><div><h4>Accueil de stagiaires & volontaires</h4><p>Accueil de volontaires et stagiaires nationaux et internationaux tout au long de l'année pour des missions court et long terme.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJETS 2025-2026 (blocs A/B/C + tableau des projets) ══ -->
+<section id="projets">
+  <div class="wrap">
+    <span class="section-tag" style="background:var(--green-fill); color:var(--green)">Projets 2025-2026</span>
+    <h2 class="section-title">Projets Solidaires 2025-2026</h2>
+    <p class="section-sub">CERVOD-TOGO offre aux étudiants et volontaires l'opportunité de proposer leurs thèmes de stage, missions et projets dans les domaines de leur choix.</p>
+    <div class="projets-contact">📧 <strong>cervodtogo@gmail.com</strong> &nbsp;|&nbsp; 📱 WhatsApp : <strong>+228 90 06 36 54</strong></div>
+
+    <div class="projet-bloc">
+      <div class="projet-bloc-header" style="background:var(--ink)">A — Proposez vos projets / missions / thèmes de stages</div>
+      <div class="projet-bloc-body">CERVOD-TOGO offre aux étudiants ou toute autre personne l'opportunité de proposer leurs <strong>thèmes de stage/missions/projets personnels ou de groupe</strong> dans les domaines de leur choix. Envoyez un message à <strong>cervodtogo@gmail.com</strong> ou par WhatsApp au <strong>+228 90 06 36 54</strong>. La direction exécutive étudie la proposition puis vous recontacte pour définir les conditions de réalisation.</div>
+    </div>
+
+    <div class="projet-bloc">
+      <div class="projet-bloc-header" style="background:var(--green)">B — Nos offres de stages (dates libres)</div>
+      <div class="stages-grid">
+        <div class="stage-item"><div class="stage-domaine">Éducation</div><p>Stage en éducation (Préscolaire et Primaire)</p></div>
+        <div class="stage-item"><div class="stage-domaine">Santé</div><p>Stage ou mission en soins infirmiers (réservé aux professionnels de santé)</p></div>
+        <div class="stage-item"><div class="stage-domaine">Social</div><p>L'orphelinat <strong>Notre Dame de Nazareth</strong> recherche en permanence des travailleurs sociaux : orthophonie, psychomotricité, psychologie, nutrition, handicap, éducateurs spécialisés, communication, menuiserie, maçonnerie…</p></div>
+        <div class="stage-item"><div class="stage-domaine">Médias</div><p>Stage en journalisme (radio)</p></div>
+      </div>
+    </div>
+
+    <div class="projet-bloc">
+      <div class="projet-bloc-header" style="background:var(--coral)">C — Projets solidaires permanents (dates libres)</div>
+      <div class="table-wrap">
+        <table class="projets-table">
+          <thead><tr><th>Code</th><th>Intitulé du projet</th><th>Qui peut participer ?</th></tr></thead>
+          <tbody>
+            <tr><td>CER-01</td><td>Initiation en informatique en milieu rural <span class="annee">(toute l'année)</span></td><td rowspan="8" class="participer">Nos projets s'adressent à toute personne motivée, quelle que soit sa nationalité ou son niveau d'études.</td></tr>
+            <tr><td>CER-02</td><td>Accompagnement d'enfants/adultes en situation de handicap <span class="annee">(toute l'année)</span></td></tr>
+            <tr><td>CER-03</td><td>Opération quartiers propres + animation avec les communautés <span class="annee">(toute l'année)</span></td></tr>
+            <tr><td>CER-04</td><td>Soins des plaies aux enfants/orphelins <span class="annee">(toute l'année)</span></td></tr>
+            <tr><td>CER-05</td><td>Soutien scolaire aux enfants défavorisés <span class="annee">(toute l'année)</span></td></tr>
+            <tr><td>CER-06</td><td>Animation sportive et culturelle jeunesse <span class="annee">(toute l'année)</span></td></tr>
+            <tr><td>CER-07</td><td>Reboisement et sensibilisation environnement <span class="annee">(toute l'année)</span></td></tr>
+            <tr><td>CER-08</td><td>Sensibilisation santé communautaire <span class="annee">(toute l'année)</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACTUALITÉS / BLOG (3 cartes d'articles) ══ -->
+<section id="blog">
+  <div class="wrap">
+    <span class="section-tag">Actualités</span>
+    <h2 class="section-title">Les dernières nouvelles du terrain</h2>
+    <p class="section-sub">Suivez nos actions, reportages et témoignages directement depuis nos équipes sur le terrain.</p>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img class="blog-img" src="https://picsum.photos/seed/cervod-blog1/400/260" alt="Camp de reboisement">
+        <div class="blog-body">
+          <span class="blog-cat" style="color:var(--green)">Camp chantier</span>
+          <h3>Camp de reboisement à Notsé : 500 arbres plantés</h3>
+          <p>Plus de 80 jeunes volontaires ont participé à notre dernier camp chantier pour reverdir la zone forestière de Notsé.</p>
+          <div class="blog-meta"><span>12 mai 2025</span><a href="#" class="read-link">Lire l'article →</a></div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img class="blog-img" src="https://picsum.photos/seed/cervod-blog2/400/260" alt="Sensibilisation santé">
+        <div class="blog-body">
+          <span class="blog-cat" style="color:var(--coral)">Santé</span>
+          <h3>Journée de sensibilisation au paludisme dans 4 villages</h3>
+          <p>Notre équipe santé a atteint plus de 600 personnes lors d'une tournée dans la région Maritime.</p>
+          <div class="blog-meta"><span>3 avril 2025</span><a href="#" class="read-link">Lire l'article →</a></div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img class="blog-img" src="https://picsum.photos/seed/cervod-blog3/400/260" alt="Distribution de kits scolaires">
+        <div class="blog-body">
+          <span class="blog-cat" style="color:var(--amber)">Éducation</span>
+          <h3>Distribution de 200 kits scolaires aux enfants parrainés</h3>
+          <p>Nous avons remis des kits complets à 200 enfants à la rentrée scolaire 2024-2025.</p>
+          <div class="blog-meta"><span>18 sept. 2024</span><a href="#" class="read-link">Lire l'article →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ASBL CERVOD-BELGIQUE (carte de Melyssa uniquement, Abasse est maintenant dans "Qui sommes-nous ?") ══ -->
+<section id="belgique">
+  <div class="wrap">
+    <span class="section-tag" style="background:var(--blue-fill); color:var(--blue)">ASBL CERVOD-Belgique</span>
+    <h2 class="section-title">Notre branche belge</h2>
+    <p class="section-sub">L'A.S.B.L. CERVOD-Belgique assure le lien entre les volontaires européens et les projets de terrain au Togo.</p>
+    <div class="belgique-content">
+      <!-- Carte de la présidente de l'ASBL Belgique -->
+      <div class="president-card">
+        <img class="president-photo" src="https://picsum.photos/seed/melyssa-amisi/300/300" alt="Melyssa AMISI">
+        <h3>Melyssa AMISI</h3>
+        <p class="president-titre">Présidente de l'A.S.B.L. CERVOD-Belgique</p>
+        <div class="president-contacts">
+          <div class="pcontact">📞 +32 472 717 597</div>
+          <div class="pcontact">📧 melyssa.amisi90@gmail.com</div>
+          <div class="pcontact"><a href="https://www.facebook.com/pyloo.ypsos.epsylone" target="_blank">Facebook</a> &nbsp;|&nbsp; <a href="https://www.instagram.com/yssa.rice/" target="_blank">Instagram</a></div>
+        </div>
+      </div>
+      <div class="belgique-text">
+        <p>La branche belge de CERVOD joue un rôle essentiel dans le recrutement et l'accompagnement des volontaires européens qui souhaitent s'engager au Togo. Elle assure la coordination administrative, l'accueil des stagiaires et le suivi des projets depuis la Belgique.</p>
+        <p style="margin-top:12px">Pour toute candidature depuis la Belgique ou l'Europe, contactez directement Melyssa AMISI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEVENIR BÉNÉVOLE (avantages + formulaire de candidature) ══ -->
+<section id="benevoles">
+  <div class="wrap">
+    <span class="section-tag">Rejoignez-nous</span>
+    <h2 class="section-title">Devenez volontaire</h2>
+    <p class="section-sub">Que vous soyez étudiant, professionnel ou retraité, vos compétences sont précieuses pour nos communautés.</p>
+    <div class="benevoles-content">
+      <div class="benv-text">
+        <h3>Pourquoi s'engager avec CERVOD-TOGO ?</h3>
+        <p>Rejoindre CERVOD-TOGO, c'est faire partie d'un mouvement de solidarité ancré dans les réalités togolaises. Chaque mission est une occasion de contribuer à un développement humain concret et durable.</p>
+        <div class="benv-avantages">
+          <div class="avantage"><div class="avantage-check">✓</div><p>Missions courtes (2 semaines) ou longues durées (3 à 12 mois)</p></div>
+          <div class="avantage"><div class="avantage-check">✓</div><p>Hébergement et accompagnement assurés sur place</p></div>
+          <div class="avantage"><div class="avantage-check">✓</div><p>Attestation de volontariat reconnue à l'international</p></div>
+          <div class="avantage"><div class="avantage-check">✓</div><p>Découverte de la culture togolaise et échanges interculturels</p></div>
+          <div class="avantage"><div class="avantage-check">✓</div><p>Impact direct et mesurable sur les communautés locales</p></div>
+        </div>
+      </div>
+      <div class="benv-form">
+        <h3 style="font-size:17px; margin-bottom:16px;">Formulaire de candidature</h3>
+        <!-- Ce formulaire envoie les candidatures par email à abds.abou2006@gmail.com via le service gratuit FormSubmit.co (aucun serveur à gérer). -->
+        <form action="https://formsubmit.co/abds.abou2006@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nouvelle candidature bénévole — CERVOD-TOGO">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <div class="form-group"><label>Prénom & nom</label><input type="text" name="Nom complet" placeholder="Votre nom complet" required></div>
+          <div class="form-group"><label>Email</label><input type="email" name="Email" placeholder="votre@email.com" required></div>
+          <div class="form-group"><label>Pays de résidence</label>
+            <select name="Pays de résidence"><option>Choisir...</option><option>Togo</option><option>Belgique</option><option>France</option><option>Autre pays</option></select>
+          </div>
+          <div class="form-group"><label>Domaine de compétence</label>
+            <select name="Domaine de compétence"><option>Choisir un domaine...</option><option>Santé / Médecine</option><option>Éducation / Enseignement</option><option>Agriculture / Environnement</option><option>Construction / Génie civil</option><option>Communication / Journalisme</option><option>Travail social</option><option>Informatique</option><option>Autre</option></select>
+          </div>
+          <div class="form-group"><label>Motivation</label><textarea name="Motivation" placeholder="Parlez-nous de votre motivation à rejoindre CERVOD-TOGO..." required></textarea></div>
+          <button type="submit" class="form-submit">Envoyer ma candidature</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHOTOS & VIDÉOS (liens réseaux sociaux + grille photo) ══ -->
+<section id="media">
+  <div class="wrap">
+    <span class="section-tag" style="background:var(--amber-fill); color:var(--amber)">Photos & vidéos</span>
+    <h2 class="section-title">CERVOD-TOGO sur le terrain</h2>
+    <p class="section-sub">Découvrez nos actions à travers nos photos et vidéos de terrain.</p>
+    <div class="media-links">
+      <a href="https://www.youtube.com/channel/UCG47M0qi-1YqpDk8WoFjU-w/videos" target="_blank" class="media-link youtube">▶ Notre chaîne YouTube</a>
+      <a href="https://www.instagram.com/benevolatcervodtogo" target="_blank" class="media-link insta">📷 Instagram</a>
+      <a href="https://www.youtube.com/watch?v=BD-JVSEOs-M" target="_blank" class="media-link reportage">🎥 Reportage sur CERVOD-TOGO</a>
+    </div>
+    <div class="photos-grid">
+      <figure class="photo-card"><img src="WhatsApp Image 2026-07-19 at 16.31.06.jpeg" alt="Accueil bénévoles à Lomé"><figcaption>Accueil bénévoles à Lomé</figcaption></figure>
+      <figure class="photo-card"><img src="WhatsApp Image 2026-07-19 at 16.30.50.jpeg" alt="Visite dortoirs orphelins"><figcaption>Visite dortoirs orphelins</figcaption></figure>
+      <figure class="photo-card"><img src="WhatsApp Image 2026-07-19 at 16.31.01.jpeg" alt="Jour d'arrivée à l'orphelinat"><figcaption>Jour d'arrivée à l'orphelinat</figcaption></figure>
+      <figure class="photo-card"><img src="WhatsApp Image 2026-07-19 at 16.30.59.jpeg" alt=""><figcaption></figcaption></figure>
+      <figure class="photo-card"><img src="WhatsApp Image 2026-07-19 at 16.31.0.jpeg" alt=""><figcaption></figcaption></figure>
+      <figure class="photo-card"><img src="WhatsApp Image 2026-07-19 at 16.31.04.jpeg" alt=""><figcaption></figcaption></figure>
+      <figure class="photo-card"><img src="WhatsApp Image 2026-07-19 at 16.30.52.jpeg" alt=""><figcaption></figcaption></figure>
+      <figure class="photo-card"><img src="WhatsApp Image 2026-07-19 at 16.30.59.jpeg" alt=""><figcaption></figcaption></figure>
+      <figure class="photo-card"><img src="WhatsApp Image 2026-07-19 at 16.31.05.jpeg" alt=""><figcaption></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT (2 colonnes : Togo / Belgique) ══ -->
+<div class="contact-band" id="contact">
+  <div class="wrap">
+    <h2>Nous contacter</h2>
+    <p>Deux points de contact : au Togo et en Belgique</p>
+    <div class="contact-cols">
+      <div class="contact-col">
+        <div class="contact-col-title">🇹🇬 Au Togo</div>
+        <div class="info-item"><div class="info-dot"></div>WhatsApp : +228 90 06 36 54</div>
+        <div class="info-item"><div class="info-dot"></div>cervodtogo@gmail.com</div>
+        <div class="info-item"><div class="info-dot"></div>Notsé, Agréé N° 3313 — MATDCL</div>
+        <div class="info-item"><div class="info-dot"></div><a href="https://www.facebook.com/benevolatcervodtogo" target="_blank">Facebook</a> &nbsp;|&nbsp; <a href="https://www.instagram.com/benevolatcervodtogo" target="_blank">Instagram</a></div>
+      </div>
+      <div class="contact-col">
+        <div class="contact-col-title">🇧🇪 En Belgique (A.S.B.L.)</div>
+        <div class="info-item"><div class="info-dot"></div>Melyssa AMISI — Présidente</div>
+        <div class="info-item"><div class="info-dot"></div>Tél : +32 472 717 597</div>
+        <div class="info-item"><div class="info-dot"></div>melyssa.amisi90@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PIED DE PAGE ══ -->
+<footer>
+  <span style="font-weight:800;">CER.VO.D.-TOGO/BELGIQUE</span>
+  <span>Cercle des Volontaires pour le Développement © 2026</span>
+  <span>Fait avec ❤ pour le Togo et la Belgique</span>
+</footer>
+
+</body>
+</html>
